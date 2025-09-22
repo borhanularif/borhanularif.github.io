@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Portfolio of Your Name: projects, skills, and contact." />
+  <title>Borhan Ul Arif — Portfolio</title>
+  <meta name="description" content="Portfolio of Borhan Ul Arif: projects, skills, and contact." />
   <link rel="icon" href="favicon.ico" />
   <style>
     :root {
@@ -12,21 +12,21 @@
       --panel: #121318;
       --text: #e5e7eb;
       --muted: #9aa0a6;
-      --accent: #4f46e5;
-      --accent-2: #06b6d4;
-      --ring: rgba(79,70,229,.35);
+      --accent: #007bff;
+      --accent-2: #17a2b8;
+      --ring: rgba(0,123,255,.35);
       --radius: 16px;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
     @media (prefers-color-scheme: light) {
-      :root { --bg:#f7f7fb; --panel:#ffffff; --text:#0f172a; --muted:#475569; --ring:rgba(79,70,229,.2);}  
+      :root { --bg:#f7f7fb; --panel:#ffffff; --text:#0f172a; --muted:#475569; --ring:rgba(0,123,255,.2);}  
     }
     * { box-sizing: border-box; }
     html, body { height: 100%; }
     body {
       margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; 
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(79,70,229,.15), transparent),
-                  radial-gradient(800px 400px at 110% 10%, rgba(6,182,212,.12), transparent),
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(0,123,255,.15), transparent),
+                  radial-gradient(800px 400px at 110% 10%, rgba(23,162,184,.12), transparent),
                   var(--bg);
       color: var(--text); line-height: 1.6; 
     }
@@ -75,7 +75,6 @@
     footer { margin: 60px 0 40px; color: var(--muted); font-size: 14px; text-align:center; }
     .social { display:flex; gap: 14px; justify-content:center; margin-top: 10px; }
 
-    /* --- CV Modal --- */
     .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.55); z-index: 50; padding: 18px; }
     .modal.open { display: grid; }
     .modal-card { width: min(1100px, 96%); height: min(85vh, 900px); background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); border-radius: 18px; box-shadow: var(--shadow); display:flex; flex-direction: column; overflow: hidden; }
@@ -89,11 +88,12 @@
 <body>
   <header>
     <div class="container nav">
-      <div style="font-weight:800">Your Name</div>
+      <div style="font-weight:800">Borhan Ul Arif</div>
       <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
-        <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -103,19 +103,32 @@
     <section class="hero">
       <div class="card intro">
         <span class="eyebrow">Portfolio</span>
-        <h1>Hi, I am <span style="color:var(--accent-2)">Borhan</span>.</h1>
-        <p class="lead" aria-live="polite">I am <span id="role">an Engineer</span> <span style="opacity:.7">(On after another)</span></p>
+        <h1>Hi, I am <span style="color:var(--accent-2)">Borhan Ul Arif</span>.</h1>
+        <p class="lead" aria-live="polite">I am <span id="role">an Engineer</span> <span style="opacity:.7">(one after another)</span></p>
         <div class="actions">
-          <!-- Upload a file named resume.pdf to the repo root for these to work -->
           <a id="view-cv" class="btn" href="resume.pdf" target="_blank" rel="noopener">View CV</a>
           <a class="btn secondary" href="resume.pdf" download>Download CV</a>
           <a class="btn secondary" href="#projects">See Projects</a>
         </div>
       </div>
       <div class="card avatar-wrap">
-        <!-- Replace with your photo in /assets/avatar.jpg -->
-        <img class="avatar" src="https://picsum.photos/600?random=7" alt="Portrait of Your Name" />
+        <img class="avatar" src="https://picsum.photos/600?random=7" alt="Portrait of Borhan Ul Arif" />
       </div>
+    </section>
+
+    <section id="about">
+      <h2 class="section-title">About</h2>
+      <div class="card" style="padding:16px">
+        <p>I’m an Industrial & Production Engineering student at KUET focused on optimization, product design, and data‑driven decision making. I enjoy turning messy real‑world problems into elegant systems. As a passionate researcher and engineer, I have hands-on experience in machine learning, materials science, and process optimization, with a keen interest in sustainable engineering solutions.</p>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-title">Education</h2>
+      <ul class="list">
+        <li><strong>B.Sc. in Industrial & Production Engineering</strong><br>Khulna University of Engineering & Technology (KUET)<br>202X - Present | CGPA: X.XX (Update with your details)</li>
+        <li><strong>Higher Secondary Certificate</strong><br>[School Name], [Location]<br>[Year] | GPA: X.XX (Update with your details)</li>
+      </ul>
     </section>
 
     <section id="projects">
@@ -148,32 +161,23 @@
       </ul>
     </section>
 
-    <section id="about">
-      <h2 class="section-title">About</h2>
-      <div class="card" style="padding:16px">
-        <p>I’m an Industrial & Production Engineering student at KUET focused on optimization, product design, and data‑driven decision making. I enjoy turning messy real‑world problems into elegant systems.</p>
-      </div>
-    </section>
-
     <section id="contact">
       <h2 class="section-title">Contact</h2>
       <div class="card" style="padding:16px">
         <p>Open to internships, research collaboration, and freelance projects.</p>
         <div class="social">
-          <!-- Update your links -->
-          <a href="mailto:you@example.com">Email</a>
-          <a href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+          <a href="mailto:borhanularif@example.com">Email</a>
+          <a href="https://www.linkedin.com/in/borhan-ul-arif" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://github.com/borhanularif" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
     </section>
 
     <footer>
-      © <span id="year"></span> Your Name. Built with ❤️ and GitHub Pages.
+      © <span id="year"></span> Borhan Ul Arif. Built with ❤️ and GitHub Pages.
     </footer>
   </main>
 
-  <!-- CV Modal -->
   <div id="cv-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cv-title">
     <div class="modal-card">
       <div class="modal-head">
@@ -204,7 +208,6 @@
       frame.src = '';
     }
 
-    // Open CV inline if resume.pdf exists; otherwise fall back to new tab
     viewBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
@@ -222,4 +225,15 @@
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
     window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-      const roles = ["an Engineer", "a Researcher", "a Student"];
+
+    const roles = ["an Engineer", "a Researcher", "a Student"];
+    const roleElement = document.getElementById('role');
+    let index = 0;
+    function changeRole() {
+      roleElement.textContent = roles[index];
+      index = (index + 1) % roles.length;
+    }
+    setInterval(changeRole, 2000);
+  </script>
+</body>
+</html>
