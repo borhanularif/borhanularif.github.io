@@ -74,6 +74,16 @@
 
     footer { margin: 60px 0 40px; color: var(--muted); font-size: 14px; text-align:center; }
     .social { display:flex; gap: 14px; justify-content:center; margin-top: 10px; }
+
+    /* --- CV Modal --- */
+    .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.55); z-index: 50; padding: 18px; }
+    .modal.open { display: grid; }
+    .modal-card { width: min(1100px, 96%); height: min(85vh, 900px); background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); border-radius: 18px; box-shadow: var(--shadow); display:flex; flex-direction: column; overflow: hidden; }
+    .modal-head { display:flex; align-items:center; justify-content:space-between; padding: 10px 14px; border-bottom: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); }
+    .modal-title { font-weight: 800; }
+    .modal-actions { display:flex; gap: 8px; }
+    .btn.icon { padding: 8px 12px; border-radius: 10px; }
+    .cv-frame { width: 100%; height: 100%; border: 0; background: #fff; }
   </style>
 </head>
 <body>
@@ -93,11 +103,12 @@
     <section class="hero">
       <div class="card intro">
         <span class="eyebrow">Portfolio</span>
-        <h1>Hi, I’m <span style="color:var(--accent-2)">Your Name</span> — <br/>Industrial & Production Engineer</h1>
-        <p class="lead">I design data‑driven solutions and build clean, reliable systems. Interested in manufacturing optimization, ML for engineering, and sustainable materials.</p>
+        <h1>Hi, I am <span style="color:var(--accent-2)">Borhan</span>.</h1>
+        <p class="lead" aria-live="polite">I am <span id="role">an Engineer</span> <span style="opacity:.7">(On after another)</span></p>
         <div class="actions">
-          <!-- Replace resume.pdf with your file in the repo root -->
-          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download CV</a>
+          <!-- Upload a file named resume.pdf to the repo root for these to work -->
+          <a id="view-cv" class="btn" href="resume.pdf" target="_blank" rel="noopener">View CV</a>
+          <a class="btn secondary" href="resume.pdf" download>Download CV</a>
           <a class="btn secondary" href="#projects">See Projects</a>
         </div>
       </div>
@@ -158,12 +169,57 @@
     </section>
 
     <footer>
-      © <span id="year"></span> Borhan Ul Arif. Built with ❤️ and GitHub Pages.
+      © <span id="year"></span> Your Name. Built with ❤️ and GitHub Pages.
     </footer>
   </main>
 
+  <!-- CV Modal -->
+  <div id="cv-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cv-title">
+    <div class="modal-card">
+      <div class="modal-head">
+        <div id="cv-title" class="modal-title">Curriculum Vitae</div>
+        <div class="modal-actions">
+          <a class="btn icon secondary" href="resume.pdf" download title="Download PDF">⬇️</a>
+          <button id="cv-close" class="btn icon secondary" title="Close">✖</button>
+        </div>
+      </div>
+      <iframe id="cv-frame" class="cv-frame" src="" title="CV PDF"></iframe>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
+
+    const modal = document.getElementById('cv-modal');
+    const frame = document.getElementById('cv-frame');
+    const viewBtn = document.getElementById('view-cv');
+    const closeBtn = document.getElementById('cv-close');
+
+    function openModal() {
+      modal.classList.add('open');
+      frame.src = 'resume.pdf#view=FitH';
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      frame.src = '';
+    }
+
+    // Open CV inline if resume.pdf exists; otherwise fall back to new tab
+    viewBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      try {
+        const res = await fetch('resume.pdf', { method: 'HEAD' });
+        if (res.ok) {
+          openModal();
+        } else {
+          window.open('resume.pdf', '_blank', 'noopener');
+        }
+      } catch (err) {
+        window.open('resume.pdf', '_blank', 'noopener');
+      }
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+      const roles = ["an Engineer", "a Researcher", "a Student"];
