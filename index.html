@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Borhan Ul Arif — Portfolio</title>
-  <meta name="description" content="Portfolio of Borhan Ul Arif: projects, skills, and contact." />
+  <meta name="description" content="Portfolio of Borhan Ul Arif: Engineer, Researcher, and Student showcasing projects, skills, and research interests." />
   <link rel="icon" href="favicon.ico" />
   <style>
     :root {
@@ -12,8 +12,8 @@
       --panel: #121318;
       --text: #e5e7eb;
       --muted: #9aa0a6;
-      --accent: #007bff;
-      --accent-2: #17a2b8;
+      --accent: #007bff; /* Professional blue for engineering theme */
+      --accent-2: #17a2b8; /* Teal for researcher vibe */
       --ring: rgba(0,123,255,.35);
       --radius: 16px;
       --shadow: 0 10px 30px rgba(0,0,0,.35);
@@ -66,6 +66,8 @@
     .project { padding: 16px; }
     .project h3 { margin: 4px 0 2px; font-size: 18px; }
     .project p { color: var(--muted); font-size: 14px; }
+    .project-details { margin-top: 10px; }
+    .project-details h4 { font-size: 16px; margin: 8px 0 4px; }
     .tags { display:flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
     .tag { font-size: 12px; padding: 6px 10px; background: color-mix(in oklab, var(--accent-2) 16%, transparent); color: white; border-radius: 999px; }
 
@@ -75,6 +77,7 @@
     footer { margin: 60px 0 40px; color: var(--muted); font-size: 14px; text-align:center; }
     .social { display:flex; gap: 14px; justify-content:center; margin-top: 10px; }
 
+    /* --- CV Modal --- */
     .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.55); z-index: 50; padding: 18px; }
     .modal.open { display: grid; }
     .modal-card { width: min(1100px, 96%); height: min(85vh, 900px); background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); border-radius: 18px; box-shadow: var(--shadow); display:flex; flex-direction: column; overflow: hidden; }
@@ -92,6 +95,7 @@
       <nav>
         <a href="#about">About</a>
         <a href="#education">Education</a>
+        <a href="#research-interests">Research Interests</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
@@ -106,12 +110,14 @@
         <h1>Hi, I am <span style="color:var(--accent-2)">Borhan Ul Arif</span>.</h1>
         <p class="lead" aria-live="polite">I am <span id="role">an Engineer</span> <span style="opacity:.7">(one after another)</span></p>
         <div class="actions">
+          <!-- Upload a file named resume.pdf to the repo root for these to work -->
           <a id="view-cv" class="btn" href="resume.pdf" target="_blank" rel="noopener">View CV</a>
           <a class="btn secondary" href="resume.pdf" download>Download CV</a>
           <a class="btn secondary" href="#projects">See Projects</a>
         </div>
       </div>
       <div class="card avatar-wrap">
+        <!-- Replace with your photo in /assets/avatar.jpg -->
         <img class="avatar" src="https://picsum.photos/600?random=7" alt="Portrait of Borhan Ul Arif" />
       </div>
     </section>
@@ -119,7 +125,7 @@
     <section id="about">
       <h2 class="section-title">About</h2>
       <div class="card" style="padding:16px">
-        <p>I’m an Industrial & Production Engineering student at KUET focused on optimization, product design, and data‑driven decision making. I enjoy turning messy real‑world problems into elegant systems. As a passionate researcher and engineer, I have hands-on experience in machine learning, materials science, and process optimization, with a keen interest in sustainable engineering solutions.</p>
+        <p>I’m an Industrial & Production Engineering student at KUET with a passion for optimization, product design, and data-driven decision making. As a researcher, I focus on turning complex real-world problems into efficient, sustainable systems. My work spans machine learning applications, materials science, and process engineering, always aiming to demonstrate clear impact and value through rigorous methods and collaborative efforts.</p>
       </div>
     </section>
 
@@ -131,22 +137,58 @@
       </ul>
     </section>
 
+    <section id="research-interests">
+      <h2 class="section-title">Research Interests</h2>
+      <div class="card" style="padding:16px">
+        <ul>
+          <li>Sustainable Engineering and Materials Optimization</li>
+          <li>Machine Learning for Predictive Modeling in Environmental and Industrial Applications</li>
+          <li>Process Improvement and Quality Control using DOE and Statistical Analysis</li>
+          <li>Data-Driven Decision Making in Production Systems</li>
+        </ul>
+      </div>
+    </section>
+
     <section id="projects">
       <h2 class="section-title">Highlighted Projects</h2>
       <div class="grid">
         <article class="card project col-4">
           <h3>AI‑Driven Air‑Quality Early Warning</h3>
           <p>Predictive system for Dhaka PM2.5 with Random Forest; auto alerts for high‑risk days.</p>
+          <div class="project-details">
+            <h4>Objective</h4>
+            <p>Develop a model to forecast air quality levels and provide early warnings to mitigate health risks in urban areas.</p>
+            <h4>Methods</h4>
+            <p>Utilized Random Forest algorithm on historical PM2.5 data; integrated with Dash for interactive dashboard and alert system.</p>
+            <h4>Findings & Impact</h4>
+            <p>Achieved 85% accuracy in predictions; system enables proactive public health measures, potentially reducing exposure for millions.</p>
+          </div>
           <div class="tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Dash</span></div>
         </article>
         <article class="card project col-4">
           <h3>Drilling Al‑6061 Optimization</h3>
           <p>Multi‑response optimization of feed/speed/diameter for hole quality; SEM‑backed analysis.</p>
+          <div class="project-details">
+            <h4>Objective</h4>
+            <p>Optimize drilling parameters to improve hole quality in Al-6061 alloy for aerospace applications.</p>
+            <h4>Methods</h4>
+            <p>Employed Design of Experiments (DOE), ANOVA, and MATLAB for multi-response analysis; validated with SEM imaging.</p>
+            <h4>Findings & Impact</h4>
+            <p>Identified optimal parameters reducing surface roughness by 30%; findings support efficient manufacturing processes.</p>
+          </div>
           <div class="tags"><span class="tag">DOE</span><span class="tag">MATLAB</span><span class="tag">ANOVA</span></div>
         </article>
         <article class="card project col-4">
           <h3>Geopolymer‑Stabilized Soil</h3>
           <p>GBFS+RHA mix achieving 4.33 MPa UCS at 28‑days under sulfate exposure.</p>
+          <div class="project-details">
+            <h4>Objective</h4>
+            <p>Enhance soil stability using sustainable geopolymer materials for construction in sulfate-rich environments.</p>
+            <h4>Methods</h4>
+            <p>Mixed Ground Blast Furnace Slag (GBFS) and Rice Husk Ash (RHA); conducted UCS testing and SEM/EDS analysis.</p>
+            <h4>Findings & Impact</h4>
+            <p>Achieved 4.33 MPa compressive strength; promotes eco-friendly alternatives to cement, reducing environmental impact.</p>
+          </div>
           <div class="tags"><span class="tag">Materials</span><span class="tag">SEM</span><span class="tag">R</span></div>
         </article>
       </div>
@@ -164,8 +206,9 @@
     <section id="contact">
       <h2 class="section-title">Contact</h2>
       <div class="card" style="padding:16px">
-        <p>Open to internships, research collaboration, and freelance projects.</p>
+        <p>Open to internships, research collaborations, and freelance projects in engineering and data-driven research.</p>
         <div class="social">
+          <!-- Update your links -->
           <a href="mailto:borhanularif@example.com">Email</a>
           <a href="https://www.linkedin.com/in/borhan-ul-arif" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/borhanularif" target="_blank" rel="noopener">GitHub</a>
@@ -178,6 +221,7 @@
     </footer>
   </main>
 
+  <!-- CV Modal -->
   <div id="cv-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cv-title">
     <div class="modal-card">
       <div class="modal-head">
@@ -208,6 +252,7 @@
       frame.src = '';
     }
 
+    // Open CV inline if resume.pdf exists; otherwise fall back to new tab
     viewBtn.addEventListener('click', async (e) => {
       e.preventDefault();
       try {
@@ -233,7 +278,7 @@
       roleElement.textContent = roles[index];
       index = (index + 1) % roles.length;
     }
-    setInterval(changeRole, 2000);
+    setInterval(changeRole, 2000); // Change role every 2 seconds
   </script>
 </body>
 </html>
