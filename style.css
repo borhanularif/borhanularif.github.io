@@ -13,13 +13,13 @@
    min-width: 100%;
  }
 
- &::-webkit-scrollbar:horizontal {
+ body::-webkit-scrollbar:horizontal {
   height: 0;
   width: 0;
   display: none;
 }
 
-&::-webkit-scrollbar-thumb:horizontal {
+body::-webkit-scrollbar-thumb:horizontal {
   display: none;
 }
 
