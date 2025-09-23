@@ -1,284 +1,338 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Borhan Ul Arif — Portfolio</title>
-  <meta name="description" content="Portfolio of Borhan Ul Arif: Engineer, Researcher, and Student showcasing projects, skills, and research interests." />
-  <link rel="icon" href="favicon.ico" />
-  <style>
-    :root {
-      --bg: #0b0c10;
-      --panel: #121318;
-      --text: #e5e7eb;
-      --muted: #9aa0a6;
-      --accent: #007bff; /* Professional blue for engineering theme */
-      --accent-2: #17a2b8; /* Teal for researcher vibe */
-      --ring: rgba(0,123,255,.35);
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    @media (prefers-color-scheme: light) {
-      :root { --bg:#f7f7fb; --panel:#ffffff; --text:#0f172a; --muted:#475569; --ring:rgba(0,123,255,.2);}  
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body {
-      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial; 
-      background: radial-gradient(1200px 600px at 10% -10%, rgba(0,123,255,.15), transparent),
-                  radial-gradient(800px 400px at 110% 10%, rgba(23,162,184,.12), transparent),
-                  var(--bg);
-      color: var(--text); line-height: 1.6; 
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7D02N52QP4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    .container { width: min(1050px, 92%); margin: 0 auto; }
-    header { position: sticky; top: 0; backdrop-filter: saturate(140%) blur(10px); background: color-mix(in oklab, var(--bg) 70%, transparent); border-bottom: 1px solid color-mix(in oklab, var(--muted) 20%, transparent); z-index: 10; }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding: 14px 0; }
-    .nav a { margin-left: 18px; font-weight: 600; color: var(--text); opacity:.9; }
-    .nav a:hover{ opacity:1 }
+        gtag('config', 'G-7D02N52QP4');
+    </script>
 
-    .hero { padding: 72px 0 36px; display:grid; grid-template-columns: 1.3fr .7fr; gap: 24px; align-items:center; }
-    @media (max-width: 860px){ .hero{ grid-template-columns: 1fr; padding-top: 40px; } }
-    .card { background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); border-radius: var(--radius); box-shadow: var(--shadow); }
-    .hero .intro { padding: 28px; }
-    .eyebrow { display:inline-block; padding: 4px 10px; border-radius: 999px; background: color-mix(in oklab, var(--accent) 22%, transparent); color: white; font-size: 12px; letter-spacing:.4px; text-transform: uppercase; }
-    h1 { font-size: clamp(28px, 4.2vw, 44px); line-height: 1.15; margin: 12px 0 10px; }
-    .lead { font-size: clamp(16px, 1.6vw, 18px); color: var(--muted); }
-    .actions { display:flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
-    .btn { display:inline-flex; align-items:center; gap:10px; padding: 12px 16px; border-radius: 12px; font-weight: 700; border:1px solid transparent; background: var(--accent); color: white; box-shadow: 0 6px 14px var(--ring); }
-    .btn.secondary { background: transparent; color: var(--text); border-color: color-mix(in oklab, var(--muted) 24%, transparent); }
-    .btn:hover { transform: translateY(-1px); }
-
-    .avatar-wrap { padding: 18px; display:flex; justify-content:center; align-items:center; }
-    .avatar { width: 220px; aspect-ratio: 1; border-radius: 24px; object-fit: cover; border: 2px solid color-mix(in oklab, var(--muted) 22%, transparent); box-shadow: var(--shadow); }
-
-    section { margin: 44px 0; }
-    .section-title { font-size: 22px; margin: 0 0 14px; }
-
-    .grid { display:grid; gap: 16px; grid-template-columns: repeat(12, 1fr); }
-    .col-4 { grid-column: span 4; }
-    .col-6 { grid-column: span 6; }
-    .col-12 { grid-column: span 12; }
-    @media (max-width: 860px){ .col-4, .col-6 { grid-column: span 12; } }
-
-    .project { padding: 16px; }
-    .project h3 { margin: 4px 0 2px; font-size: 18px; }
-    .project p { color: var(--muted); font-size: 14px; }
-    .project-details { margin-top: 10px; }
-    .project-details h4 { font-size: 16px; margin: 8px 0 4px; }
-    .tags { display:flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-    .tag { font-size: 12px; padding: 6px 10px; background: color-mix(in oklab, var(--accent-2) 16%, transparent); color: white; border-radius: 999px; }
-
-    .list { display:grid; gap: 10px; }
-    .list li { background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); border-radius: 12px; padding: 12px 14px; }
-
-    footer { margin: 60px 0 40px; color: var(--muted); font-size: 14px; text-align:center; }
-    .social { display:flex; gap: 14px; justify-content:center; margin-top: 10px; }
-
-    /* --- CV Modal --- */
-    .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.55); z-index: 50; padding: 18px; }
-    .modal.open { display: grid; }
-    .modal-card { width: min(1100px, 96%); height: min(85vh, 900px); background: var(--panel); border: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); border-radius: 18px; box-shadow: var(--shadow); display:flex; flex-direction: column; overflow: hidden; }
-    .modal-head { display:flex; align-items:center; justify-content:space-between; padding: 10px 14px; border-bottom: 1px solid color-mix(in oklab, var(--muted) 24%, transparent); }
-    .modal-title { font-weight: 800; }
-    .modal-actions { display:flex; gap: 8px; }
-    .btn.icon { padding: 8px 12px; border-radius: 10px; }
-    .cv-frame { width: 100%; height: 100%; border: 0; background: #fff; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,  maximum-scale=1.0, user-scalable=no">
+    <title>Md Abu Saeed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mediaqueries.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+	
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div style="font-weight:800">Borhan Ul Arif</div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#research-interests">Research Interests</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+    <section id="home">
+        <nav id="desktop-nav">
+            <div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#timeline">Education</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
 
-  <main class="container">
-    <section class="hero">
-      <div class="card intro">
-        <span class="eyebrow">Portfolio</span>
-        <h1>Hi, I am <span style="color:var(--accent-2)">Borhan Ul Arif</span>.</h1>
-        <p class="lead" aria-live="polite">I am <span id="role">an Engineer</span> <span style="opacity:.7">(one after another)</span></p>
-        <div class="actions">
-          <!-- Upload a file named resume.pdf to the repo root for these to work -->
-          <a id="view-cv" class="btn" href="resume.pdf" target="_blank" rel="noopener">View CV</a>
-          <a class="btn secondary" href="resume.pdf" download>Download CV</a>
-          <a class="btn secondary" href="#projects">See Projects</a>
-        </div>
-      </div>
-      <div class="card avatar-wrap">
-        <!-- Replace with your photo in /assets/avatar.jpg -->
-        <img class="avatar" src="https://picsum.photos/600?random=7" alt="Portrait of Borhan Ul Arif" />
-      </div>
+        <nav id="hamburger-nav">
+            <div style="width: 100%;"></div>
+            <div class="hamburger-menu">
+                <div class="hamburger-icon" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="menu-links">
+                    <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                    <li><a href="#timeline" onclick="toggleMenu()">Education</a></li>
+                    <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                </div>
+            </div>
+        </nav>
+        <section id="profile">
+            <div class="section__pic-container">
+                <img src="./assets/photo1.png" alt="Saeed profile picture">
+            </div>
+            <div class="section__text">
+                <p class="section__text__p1">Hello I'm</p>
+                <h1 class="title">Md Abu Saeed</h1>
+                <!-- <p class="section__text__p2">4th year student, CSE </p> -->
+                <p class="tag">And I'm a <span class="typing"></span></p>
+                <div class="btn__container">
+                    <button class="btn btn-color-2" onclick="window.open('./assets/my_cv.pdf')">Download CV</button>
+                    <button class="btn btn-color-1" onclick="location.href='#contact'">Contact Info</button>
+                </div>
+                <div id="socials-container">
+                    <img src="./assets/linkedin.png" 
+                    alt="My LinkedIn Profile"
+                    class="icon"
+                    onclick="window.open('https://www.linkedin.com/in/md-abu-saeed-728a51206')"
+                    />
+                    <img src="./assets/github.png" 
+                    alt="My Github Profile"
+                    class="icon"
+                    onclick="window.open('https://github.com/abusaeed2433')"
+                    />
+                    <img src="./assets/leetcode_logo.png" 
+                    alt="My LeetCode Profile"
+                    class="icon"
+                    onclick="window.open('https://leetcode.com/abusaeed2433/')"
+                    />
+                    <img src="./assets/codeforces.png" 
+                    alt="My Codeforces Profile"
+                    class="icon"
+                    onclick="window.open('https://codeforces.com/profile/abusaeed2433')"
+                    />
+                </div>
+            </div>
+
+        </section> 
     </section>
+
+    <hr class="section-with-line">
 
     <section id="about">
-      <h2 class="section-title">About</h2>
-      <div class="card" style="padding:16px">
-        <p>I’m an Industrial & Production Engineering student at KUET with a passion for optimization, product design, and data-driven decision making. As a researcher, I focus on turning complex real-world problems into efficient, sustainable systems. My work spans machine learning applications, materials science, and process engineering, always aiming to demonstrate clear impact and value through rigorous methods and collaborative efforts.</p>
-      </div>
+        <p class="section__text__p1">Get To Know More</p>
+        <h1 class="title">About Me</h1>
+        <div class="section-container">
+            <div class="section__pic-container">
+                <img src="./assets/photo1.png" alt="Profile Picture" class="about-pic">
+            </div>
+            <div class="about-details-container">
+
+                <div class="about-container">
+
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="Experience icon" class="icon" />
+                        <h3>Android App Developer</h3>
+                        <p>3+ years of personal practice</p>
+                    </div>
+                    <div class="details-container">
+                        <img src="./assets/experience.png" alt="Education icon" class="icon" />
+                        <h3>Java developer</h3>
+                        <p>1 year of personal practice</p>
+                    </div>
+
+                </div>
+
+                <div class="text-container">
+                    <p class="about-text">
+                        A passionate <b>Java</b> developer enthusiast with a robust understanding of data structure, algorithms, and design patterns.<br>Fast learner and passionate about working in fields related to Java and new technologies
+                        <br><br>
+                        I have worked on many programming languages and developed some projects also. Among them <b>3 apps</b> are published in the play store and <b>1 website</b> with SpringBoot as backend is live.
+                        <br><br>
+                        I have also completed some projects like Shape Learning, Laptop ScreenShare to Android App, Bus Manager, Video player, Video Calling, Shape detection without AI and few small projects.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="education">
-      <h2 class="section-title">Education</h2>
-      <ul class="list">
-        <li><strong>B.Sc. in Industrial & Production Engineering</strong><br>Khulna University of Engineering & Technology (KUET)<br>202X - Present | CGPA: X.XX (Update with your details)</li>
-        <li><strong>Higher Secondary Certificate</strong><br>[School Name], [Location]<br>[Year] | GPA: X.XX (Update with your details)</li>
-      </ul>
-    </section>
+    <hr class="section-with-line">
 
-    <section id="research-interests">
-      <h2 class="section-title">Research Interests</h2>
-      <div class="card" style="padding:16px">
-        <ul>
-          <li>Sustainable Engineering and Materials Optimization</li>
-          <li>Machine Learning for Predictive Modeling in Environmental and Industrial Applications</li>
-          <li>Process Improvement and Quality Control using DOE and Statistical Analysis</li>
-          <li>Data-Driven Decision Making in Production Systems</li>
-        </ul>
-      </div>
-    </section>
+    <section id="timeline">
+        <p class="section__text__p1">Explore My</p>
+        <h1 class="title">Education</h1>
 
+        <div class="history-tl-container">
+
+            <ul class="timeline-ul">
+                <li class="timeline-li">
+                    <div class="timestamp">
+                        <h2>BSc in Computer Science and Engineering</h2>
+                        <p>Khulna University of Engineering & Technology, Khulna, Bangladesh</p>
+                        <p class="time"><b>2020-2025</b></p>
+                        <p class="time"><b>CGPA: 3.63</b></p>
+                    </div>
+                </li>
+
+                <li class="timeline-li">
+                    <div class="timestamp">
+                        <h2>Higher Secondary Certificate</h2>
+                        <p>New Govt. Degree College, Rajshahi</p>
+                        <p class="time"><b>2017-2019</b></p>
+                        <p class="time"><b>GPA: 5.00</b></p>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+        
+    </section>
+    
+    <hr class="section-with-line">
+    
     <section id="projects">
-      <h2 class="section-title">Highlighted Projects</h2>
-      <div class="grid">
-        <article class="card project col-4">
-          <h3>AI‑Driven Air‑Quality Early Warning</h3>
-          <p>Predictive system for Dhaka PM2.5 with Random Forest; auto alerts for high‑risk days.</p>
-          <div class="project-details">
-            <h4>Objective</h4>
-            <p>Develop a model to forecast air quality levels and provide early warnings to mitigate health risks in urban areas.</p>
-            <h4>Methods</h4>
-            <p>Utilized Random Forest algorithm on historical PM2.5 data; integrated with Dash for interactive dashboard and alert system.</p>
-            <h4>Findings & Impact</h4>
-            <p>Achieved 85% accuracy in predictions; system enables proactive public health measures, potentially reducing exposure for millions.</p>
-          </div>
-          <div class="tags"><span class="tag">Python</span><span class="tag">ML</span><span class="tag">Dash</span></div>
-        </article>
-        <article class="card project col-4">
-          <h3>Drilling Al‑6061 Optimization</h3>
-          <p>Multi‑response optimization of feed/speed/diameter for hole quality; SEM‑backed analysis.</p>
-          <div class="project-details">
-            <h4>Objective</h4>
-            <p>Optimize drilling parameters to improve hole quality in Al-6061 alloy for aerospace applications.</p>
-            <h4>Methods</h4>
-            <p>Employed Design of Experiments (DOE), ANOVA, and MATLAB for multi-response analysis; validated with SEM imaging.</p>
-            <h4>Findings & Impact</h4>
-            <p>Identified optimal parameters reducing surface roughness by 30%; findings support efficient manufacturing processes.</p>
-          </div>
-          <div class="tags"><span class="tag">DOE</span><span class="tag">MATLAB</span><span class="tag">ANOVA</span></div>
-        </article>
-        <article class="card project col-4">
-          <h3>Geopolymer‑Stabilized Soil</h3>
-          <p>GBFS+RHA mix achieving 4.33 MPa UCS at 28‑days under sulfate exposure.</p>
-          <div class="project-details">
-            <h4>Objective</h4>
-            <p>Enhance soil stability using sustainable geopolymer materials for construction in sulfate-rich environments.</p>
-            <h4>Methods</h4>
-            <p>Mixed Ground Blast Furnace Slag (GBFS) and Rice Husk Ash (RHA); conducted UCS testing and SEM/EDS analysis.</p>
-            <h4>Findings & Impact</h4>
-            <p>Achieved 4.33 MPa compressive strength; promotes eco-friendly alternatives to cement, reducing environmental impact.</p>
-          </div>
-          <div class="tags"><span class="tag">Materials</span><span class="tag">SEM</span><span class="tag">R</span></div>
-        </article>
-      </div>
+        <p class="section__text__p1">Browse My Recent</p>
+        <h1 class="title">Projects</h1>
+
+        <div class="publications-container projects-container">
+
+            <div id="projectContent">
+                
+                <ul id="prImg" style="display: none;" class="projectContent-list-container">
+                    
+
+                    <li class="project-lists">
+
+                        <div class="project-details-container">
+                            
+                            <div class="project-image-container">
+                                <img src="./assets/classmate_logo.png" class="project-pic">
+                            </div>
+
+                            <div class="project-text-container">
+                                <h3 class="pr-title">ClassMate: Your Class Manager</h3>
+                                <p class="pr-paragraph">
+                                    A straightforward class management app enables admins to organize classes, update schedules, and communicate securely, while users join classes, access schedules, and communicate with classmates. Prioritizing privacy and security with encrypted data transmission, it facilitates reliance on accessible information.
+                                </p>
+                                <div class="btn-container-load">
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://play.google.com/store/apps/details?id=com.lazymind.classmate')">See in Store</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="hr-break">
+
+                        <div class="project-details-container">
+                            
+                            <div class="project-image-container">
+                                <img src="./assets/whiteboard.png" class="project-pic">
+                            </div>
+
+                            <div class="project-text-container">
+                                <h3 class="pr-title">WhiteBoard</h3>
+                                <p class="pr-paragraph">
+                                    A feature-rich whiteboard app enables drawing in multiple colors and sizes, customizable paths, image insertion, and automatic saving of editable boards, with additional line and circle detection capabilities.
+                                </p>
+                                <div class="btn-container-load">
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://play.google.com/store/apps/details?id=com.unknownn.smartboard')">See in Store</button>
+                                </div>
+                            </div>
+
+                        </div>
+                        <hr class="hr-break">
+
+                        <div class="project-details-container">
+                            
+                            <div class="project-image-container">
+                                <img src="./assets/nibash.png" class="project-pic">
+                            </div>
+
+                            <div class="project-text-container">
+                                <h3 class="pr-title">Nibash</h3>
+                                <p class="pr-paragraph">
+                                    A convenient rental property app enables effortless searches for nearby houses, providing details, directions, and rental facilities with a single tap. Users can also create accounts to rent out their own properties.
+                                </p>
+                                <div class="btn-container-load">
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://play.google.com/store/apps/details?id=com.unknownn.rentroom')">See in Store</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-break">
+
+                        <div class="project-details-container">
+                            
+                            <!-- Bit2Byte-->
+
+                            <div class="project-image-container">
+                                <img src="./assets/bit2byte_logo.jpg" class="project-pic">
+                            </div>
+
+                            <div class="project-text-container">
+                                <h3 class="pr-title">Bit2Byte Club website</h3>
+                                <p class="pr-paragraph">
+                                    Bit2Byte is a Software Research & Development Community of KUET. This is the website of our development club. Here user can write/share blogs. Organizer can manage club activities.
+                                </p>
+                                <div class="btn-container-load">
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://www.bit2bytekuet.com')">View Site</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-break">
+
+                        <div class="project-details-container">
+                            
+                            <div class="project-image-container">
+                                <img src="./assets/screen_share.png" class="project-pic">
+                            </div>
+
+                            <div class="project-text-container">
+                                <h3 class="pr-title">Laptop Screen Share to Android App</h3>
+                                <p class="pr-paragraph">
+                                    Desktop app is built using jetpack compose with Kotlin and Java. The Android app is built with Java, Kotlin, Xml. The android app can show the current screen of the desktop in local network. Screen fps is around 10.
+                                </p>
+                                <div class="btn-container-load">
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://github.com/abusaeed2433/DesktopMouseServer')">Desktop App(Github)</button>
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://github.com/abusaeed2433/MouseClient')">Android App(Github)</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-break">
+
+                        <div class="project-details-container">
+                            
+                            <div class="project-image-container">
+                                <img src="./assets/robotic_car.png" class="project-pic">
+                            </div>
+
+                            <div class="project-text-container">
+                                <h3 class="pr-title">Robotic car controller app</h3>
+                                <p class="pr-paragraph">
+                                    It can transmit command via websocket, bluetoth as well as over the internet to the robotic car. The robotic car is attacched with a Rock-Pi that receives commands, and move the car accordingly.
+                                </p>
+                                <div class="btn-container-load">
+                                    <button id="btnImg" class="btn btn-color-2 button-projects-load" onclick="window.open('https://github.com/abusaeed2433/WheelController')">See in Github</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="hr-break">
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
     </section>
 
-    <section id="skills">
-      <h2 class="section-title">Skills</h2>
-      <ul class="list">
-        <li><strong>Software:</strong> SolidWorks, ANSYS, MATLAB, Python, Excel</li>
-        <li><strong>ML:</strong> Scikit‑learn, PyTorch (basics), SHAP, Model evaluation (F1, ROC)</li>
-        <li><strong>Methods:</strong> DOE, SEM/EDS, UCS testing, Quality tools, Lean</li>
-      </ul>
-    </section>
-
+    <hr class="section-with-line">
+    
     <section id="contact">
-      <h2 class="section-title">Contact</h2>
-      <div class="card" style="padding:16px">
-        <p>Open to internships, research collaborations, and freelance projects in engineering and data-driven research.</p>
-        <div class="social">
-          <!-- Update your links -->
-          <a href="mailto:borhanularif@example.com">Email</a>
-          <a href="https://www.linkedin.com/in/borhan-ul-arif" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/borhanularif" target="_blank" rel="noopener">GitHub</a>
+        <p class="section__text__p1">Get In Touch</p>
+        <h1 class="title">Contact Me</h1>
+
+        <div class="contact-content">
+            <div class="column left">
+                <div class="icons">
+                    <div class="row">
+                        <i class="fas fa-user"></i>
+                        <div class="info">
+                            <div class="head">Name</div>
+                            <div class="sub-title">Md Abu Saeed</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info">
+                            <div class="head">Address</div>
+                            <div class="sub-title">Daulatpur, Kushtia, Bangladesh</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info">
+                            <div class="head">Email</div>
+                            <div class="sub-title">abusaeed2433@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <footer>
-      © <span id="year"></span> Borhan Ul Arif. Built with ❤️ and GitHub Pages.
-    </footer>
-  </main>
-
-  <!-- CV Modal -->
-  <div id="cv-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cv-title">
-    <div class="modal-card">
-      <div class="modal-head">
-        <div id="cv-title" class="modal-title">Curriculum Vitae</div>
-        <div class="modal-actions">
-          <a class="btn icon secondary" href="resume.pdf" download title="Download PDF">⬇️</a>
-          <button id="cv-close" class="btn icon secondary" title="Close">✖</button>
-        </div>
-      </div>
-      <iframe id="cv-frame" class="cv-frame" src="" title="CV PDF"></iframe>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    const modal = document.getElementById('cv-modal');
-    const frame = document.getElementById('cv-frame');
-    const viewBtn = document.getElementById('view-cv');
-    const closeBtn = document.getElementById('cv-close');
-
-    function openModal() {
-      modal.classList.add('open');
-      frame.src = 'resume.pdf#view=FitH';
-    }
-    function closeModal() {
-      modal.classList.remove('open');
-      frame.src = '';
-    }
-
-    // Open CV inline if resume.pdf exists; otherwise fall back to new tab
-    viewBtn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      try {
-        const res = await fetch('resume.pdf', { method: 'HEAD' });
-        if (res.ok) {
-          openModal();
-        } else {
-          window.open('resume.pdf', '_blank', 'noopener');
-        }
-      } catch (err) {
-        window.open('resume.pdf', '_blank', 'noopener');
-      }
-    });
-
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
-
-    const roles = ["an Engineer", "a Researcher", "a Student"];
-    const roleElement = document.getElementById('role');
-    let index = 0;
-    function changeRole() {
-      roleElement.textContent = roles[index];
-      index = (index + 1) % roles.length;
-    }
-    setInterval(changeRole, 2000); // Change role every 2 seconds
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
