@@ -8,7 +8,7 @@ function toggleMenu() {
 $(document).ready(function(){
 
     var typed = new Typed(".typing", {
-        strings: ["Student", "Java Developer", "App Developer"],
+        strings:["Deep Learning Enthusiast", "NLP Explorer", "Computer Vision Learner", "Software Developer"],
         typeSpeed: 100,
         backSpeed: 60,
         loop: true
