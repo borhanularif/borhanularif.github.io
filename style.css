@@ -852,7 +852,7 @@ body::-webkit-scrollbar-thumb:horizontal {
   .time {
     display: block; /* Forces vertical stacking */
     width: auto;    /* Lets width fit content naturally, avoiding excessive width */
-    margin: 10px 0;  /* Adds space between stacked boxes; adjust as needed */
+    margin: 8px 0;  /* Adds space between stacked boxes; adjust as needed */
   }
 }
 
