@@ -548,6 +548,19 @@
 
  /* PROJECTS SECTION */
 
+/* Icon tiles for projects (Font Awesome) */
+.project-icon {
+  font-size: 3.5rem;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 12px;
+  color: #258CC7; /* your accent */
+}
+
 
  .button-projects-container {
    display: flex;
