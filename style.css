@@ -694,24 +694,24 @@ body::-webkit-scrollbar-thumb:horizontal {
 
  /* CONTACT SECTION */
 
- .contact-content {
-   display: flex;
-   justify-content: center;
- }
+.contact-content {
+  display: flex;
+  justify-content: center;
+}
 
  #contact {
    display: block;
  }
 
- #contact .contact-content .column {
-   width: 40rem;
-   margin-bottom: 2rem;
-   margin-top: 6rem;
- }
+#contact .contact-content .column {
+  width: 40rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem; /* Reduced from 6rem for less space above details; adjust to 1rem or 0 if needed */
+}
 
- #contact .contact-content .left {
-   /*margin-left: 10rem;*/
- }
+#contact .contact-content .left {
+  margin-left: 0; /* Removed 10rem to eliminate the rightward shift */
+}
 
 
  #contact .contact-content .text {
