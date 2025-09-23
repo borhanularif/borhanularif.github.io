@@ -310,92 +310,73 @@
  }
 
  /* ABOUT SECTION */
-
- #about {
-   position: relative;
- }
-
- .about-text {
-   text-align: justify;
- }
-
- .about-container {
-   gap: 2rem;
-   margin-bottom: 2rem;
-   margin-top: 4rem;
- }
-
-.about-details-container {
-    display: flex;
-    flex-direction: column; /* stack vertically */
-    gap: 2rem; /* space between rows */
+#about {
+  position: relative;
 }
 
+.about-text {
+  text-align: justify;
+}
 
- .about-container,
- .about-details-container {
-   display: flex;
- }
+/* Cards row spacing */
+.about-container {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem; /* slightly smaller top margin */
+  flex-wrap: wrap;  /* wrap cards on smaller widths */
+}
 
- .about-pic {
-   border-radius: 2rem;
- }
+/* 🔑 Make the Experience + About text stack on separate rows */
+.about-details-container {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 2rem;              /* space between the two rows */
+  justify-content: center;
+}
 
- .scroll__text {
-   position: absolute;
-   right: -5rem;
-   bottom: 4.5rem;
- }
+/* Keep both containers as flex where needed (the row stack is controlled by about-details-container) */
+.details-container {
+  flex: 1;
+  background: white;
+  border-radius: 0.5rem;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  border-color: rgb(163, 163, 163);
+  text-align: center;
+  padding: 1rem; /* small padding for nicer look */
+}
 
- .arrow {
-   position: absolute;
-   right: -5rem;
-   bottom: 2.5rem;
- }
+.section-container {
+  display: flex;   /* image (optional) + right column */
+  gap: 4rem;
+  height: 80%;
+}
 
- .scroll__text-top {
-   position: absolute;
-   right: -5rem;
-   top: 4.5rem;
- }
+.about-pic {
+  border-radius: 2rem;
+}
 
- .arrow_top {
-   position: absolute;
-   right: -5rem;
-   top: 2.5rem;
- }
+.section__pic-container {
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
+}
 
- .details-container {
-   flex: 1;
-   background: white;
-   border-radius: 0.5rem;
-   border: rgb(53, 53, 53) 0.1rem solid;
-   border-color: rgb(163, 163, 163);
-   text-align: center;
- }
+/* Optional: tighten layout on narrower screens */
+@media screen and (max-width: 1200px) {
+  #about .section-container {
+    display: block; /* image then details stack */
+  }
 
- .section-container {
-   gap: 4rem;
-   height: 80%;
- }
+  .about-container {
+    margin-top: 1rem;
+  }
 
- .section__pic-container {
-   height: 400px;
-   width: 400px;
-   margin: auto 0;
- }
+  .details-container {
+    padding: 0.9rem;
+  }
+}
 
- .hyper__text {
-   color: rgb(18, 177, 240);
-   text-decoration: underline;
-   text-decoration-color: black;
- }
-
- .hyper__text:hover {
-   color: rgb(13, 231, 86);
-   text-decoration: none;
-   text-decoration-color: rgb(181, 181, 181);
- }
 
  /* TIMELINE SECTION */
 
