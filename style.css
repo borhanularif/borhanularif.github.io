@@ -839,3 +839,10 @@
  footer p {
    text-align: center;
  }
+
+#about .about-details-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
