@@ -548,9 +548,9 @@
 
  /* PROJECTS SECTION */
 
-/* Icon tiles for projects (Font Awesome) */
+/* Wrapper tile around each Lucide icon */
 .project-icon {
-  font-size: 3.5rem;
+  font-size: 0;                 /* avoid stray inline spacing */
   width: 100px;
   height: 100px;
   display: flex;
@@ -558,8 +558,16 @@
   justify-content: center;
   border: 1px solid rgb(163, 163, 163);
   border-radius: 12px;
-  color: #258CC7; /* your accent */
+  color: #258CC7;               /* Lucide SVGs use currentColor for stroke */
 }
+
+/* Make the actual SVG a comfortable size */
+.project-icon svg {
+  width: 48px;
+  height: 48px;
+  stroke-width: 1.75;           /* a bit sleeker than default */
+}
+
 
 
  .button-projects-container {
