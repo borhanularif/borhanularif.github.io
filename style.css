@@ -325,10 +325,12 @@
    margin-top: 4rem;
  }
 
- .about-details-container {
-   justify-content: center;
-   flex-direction: column;
- }
+.about-details-container {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    gap: 2rem; /* space between rows */
+}
+
 
  .about-container,
  .about-details-container {
