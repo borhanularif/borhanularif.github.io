@@ -453,17 +453,17 @@ body::-webkit-scrollbar-thumb:horizontal {
    bottom: 2.5rem;
  }
 
- .time {
-   padding-left: 10px;
-   padding-right: 10px;
-   background: #258CC7;
-   display: inline-block;
-   color: white;
-   font-size: 15px;
-   width: auto;
-   white-space: nowrap;
- }
-
+.time {
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #258CC7;
+  display: inline-block;
+  color: white;
+  font-size: 15px;
+  width: 120px; /* Adjust this value as needed to fit your longest content */
+  white-space: nowrap;
+  text-align: center; /* Optional: Centers the text inside for a balanced look */
+}
  /* PUBLICATIONS SECTION */
 
  #publications,
